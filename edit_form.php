@@ -14,7 +14,7 @@ class block_custom_edit_form extends block_edit_form {
        $users=get_users();
         foreach ($users as $user) {
            
-                $mform->addElement('filepicker', 'config_image_'.$user->id.'_file', get_string('backgroundimage', 'block_custom'), null,array('subdirs' => 0, 'maxbytes' => 5000000, 'maxfiles' => 1,'accepted_types' => array('.png', '.jpg', '.gif', '.jpeg')));
+                $mform->addElement('filepicker', 'config_image_'.$user->id, get_string('backgroundimage', 'block_custom'), null,array('subdirs' => 0, 'maxbytes' => 5000000, 'maxfiles' => 1,'accepted_types' => array('.png', '.jpg', '.gif', '.jpeg')));
                
          }
         }
@@ -33,7 +33,7 @@ class block_custom_edit_form extends block_edit_form {
             $draftitemid=array();
             
 
-            $draftitemid[$user->id] = file_get_submitted_draft_itemid('config_image_'.$user->id.'_file');
+            $draftitemid[$user->id] = file_get_submitted_draft_itemid('config_image_'.$user->id);
             
             file_prepare_draft_area($draftitemid[$user->id], $this->block->context->id, 'block_custom', 'content', 0,
                 array('subdirs' => true));
@@ -41,10 +41,17 @@ class block_custom_edit_form extends block_edit_form {
             $entry->image[] = $draftitemid[$user->id];
             parent::set_data($defaults);
             if ($data = parent::get_data()) {
-                file_save_draft_area_files($data->config_image_."$custom->id", $this->block->context->id, 'block_custom', 'content', 0,
+                //echo $data->config_image_."$user->id";
+                $config_image='config_image_'.$user->id;
+                //echo $data->$config;
+
+                
+                file_save_draft_area_files($data->$config_image, $this->block->context->id, 'block_custom', 'content', 0,
                     array('subdirs' => true));
             }//if
+           
         }//for
+        
     }//set_data
 }//class
 

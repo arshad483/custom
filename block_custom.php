@@ -28,8 +28,8 @@ class block_custom extends block_base {
 
          $fs = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_custom', 'content');
-       /* var_dump($files);         
-         die();*/
+        var_dump($files);         
+         die();
          return $this->content;
     }
 
