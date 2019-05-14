@@ -11,12 +11,12 @@ class block_custom_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_title', get_string('blocktitle', 'block_custom'));
         $mform->setType('config_title', PARAM_TEXT); 
        
-       $users=get_users();
-        foreach ($users as $user) {
+       /*$users=get_users();
+        foreach ($users as $user) {*/
            
-                $mform->addElement('filemanager', 'config_image_'.$user->id.'_file', get_string('backgroundimage', 'block_custom'), null,array('subdirs' => 0, 'maxbytes' => 5000000, 'maxfiles' => 1,'accepted_types' => array('.png', '.jpg', '.gif', '.jpeg')));
+                $mform->addElement('filepicker', 'config_image', get_string('backgroundimage', 'block_custom'), null,array('subdirs' => 0, 'maxbytes' => 5000000, 'maxfiles' => 1,'accepted_types' => array('.png', '.jpg', '.gif', '.jpeg')));
                
-           }
+          // }
         }
 
     function set_data($defaults)

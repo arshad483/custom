@@ -22,14 +22,14 @@ class block_custom extends block_base {
         $this->content->footer = '';
         
         $this->content->text.='<div>';
-        $this->content->text.= '<p>'.$this->config->attachments.'</p>';
+        $this->content->text.= '<p>'.$this->config->image.'</p>';
        
          $this->content->text.='</div>';
 
          $fs = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_custom', 'content');
         var_dump($files);         
-         //die();
+         die();
          return $this->content;
     }
 
