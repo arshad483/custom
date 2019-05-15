@@ -67,7 +67,7 @@ class block_custom extends block_base {
                 $dataDB=$DB->record_exists($table,$conditions); 
                 $updateId=$DB->get_record($table,$conditions);
                 
-                if($dataDB){                   
+                /*if($dataDB){                   
                     $dataobject=new stdClass();
                     $dataobject->id=$updateId->id;
                     $dataobject->image_path=$only_url;
@@ -78,12 +78,10 @@ class block_custom extends block_base {
                     $dataobject->image_id=$this->config->attachments;
                     $dataobject->image_path=$only_url;
                     $DB->insert_record($table, $dataobject);         
-                }//else
-            }           
-        }
-         if($this->config->link){
-           
-            $stored_url=$DB->get_record($table, ['image_id' => $this->config->attachments]);
+                }//else*/
+            }//if 
+
+            $stored_url=$DB->get_record($table, ['image_id' => $data->$image]);
             
                 if(!$stored_url)
                 {
@@ -92,10 +90,10 @@ class block_custom extends block_base {
                 }
                 $this->content->text.=  '<div class="container" style="background-image:url(' . $stored_url->image_path . ')">';           
                 $this->content->text.='</div>'; 
-        }
-        }      
+                }               
+        }//for
 
-        }
+    }//config_instance
 
 
 }
