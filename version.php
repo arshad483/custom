@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017111301;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2017111302;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2017051500;        // Requires this Moodle version
 $plugin->component = 'block_custom';     // custom by Nitesh

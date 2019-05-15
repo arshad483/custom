@@ -15,8 +15,7 @@ class block_custom_edit_form extends block_edit_form {
         foreach ($users as $user) {
            
                 $mform->addElement('filemanager', 'config_image_'.$user->id, get_string('backgroundimage', 'block_custom'), null,array('subdirs' => 0, 'maxbytes' => 5000000, 'maxfiles' => 1,'accepted_types' => array('.png', '.jpg', '.gif', '.jpeg')));
-                 $fs = get_file_storage();
-                $files = $fs->get_area_files($this->context->id, 'block_focus_area', 'content');
+                 
                
          }
         }
@@ -32,10 +31,9 @@ class block_custom_edit_form extends block_edit_form {
         $users=get_users();
         foreach ($users as $user) {
             
-            $draftitemid=array();
-            
+            $draftitemid=array();            
 
-            $draftitemid[$user->id] = file_get_submitted_draft_itemid('config_image_'.$user->id);
+            $draftitemid[$user->id] = file_get_submitted_draft_itemid('config_image_'.$user->id);   
             
             $defaults->config_text['text'] =file_prepare_draft_area($draftitemid[$user->id], $this->block->context->id, 'block_custom', 'content', 0,
                 array('subdirs' => true));
