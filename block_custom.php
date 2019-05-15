@@ -37,7 +37,7 @@ class block_custom extends block_base {
                     
                 }
                 $this->content->text.=  '<div class="container" style="background-image:url(' . $stored_url->image_path . ')">'; 
-                
+                $this->content->text .= '<img src="' .  $stored_url->image_path . '" alt="' . $filename . '" />';   
                 /*$this->content->text.= '<p>'.$this->config->$userimage.'</p>';  */      
                 $this->content->text.='</div>'; 
 
@@ -97,7 +97,7 @@ class block_custom extends block_base {
                     $dataobject->image_path=$only_url;
                     $DB->insert_record($table, $dataobject);         
                 }//else*/
-                var_dump($data->$image);
+                
             }//if 
             
             
